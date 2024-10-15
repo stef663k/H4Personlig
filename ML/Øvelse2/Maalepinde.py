@@ -1,19 +1,27 @@
 import pandas as pd
 import warnings
+import re
+from nltk.corpus import stopwords
+nltk = __import__('nltk')
+nltk.download('stopwords')
 
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
-def hent_maalepinde(fagnr: int) -> list[str]:
-    df = pd.read_excel('data/Fagtabel.xlsx', skiprows=1)
-    print(df.columns)
-    return df[df['NUMMER'] == fagnr]['TITEL'].tolist()
+def clean_maalepinde_text(text: str, danish_stopwords: set) -> list[str]:
+    text = re.sub(r'^\d+', '', text)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = text.lower().split()
 
-ml = hent_maalepinde(17348)
-sw_test = hent_maalepinde(16484)
+    return [word for word in text if word not in danish_stopwords]
 
-for m in ml:
-    print("ml", m)
+def saml_maalepinde_for_programmering(sheet_path: str) -> list[str]:
+    df = pd.read_excel(sheet_path, sheet_name=2, skiprows=1)
+    filtered_df = df[df['TITEL'].str.contains('programmering', case=False, na=False)]
 
-for m in sw_test:
-    print("test: ", m)
-   
+    danish_stopwords = set(stopwords.words('danish'))
+
+    all_words = []
+
+    for maalepind in filtered_df['MÅLEPIND']:
+        words = clean_maalepinde_text(maalepind, danish_stopwords)
+        all_words.extend(words)

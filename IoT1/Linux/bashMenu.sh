@@ -86,19 +86,16 @@ handle_choice(){
 
 	    echo "Searching for occurrences of '$filename' in the home directory..."
 
-	    # Find files with the given name and store results in a temp file
 	    temp_file=$(mktemp)
 	    find ~ -name "$filename" -print > "$temp_file" 2>/dev/null
 
-	    # Debugging: Print the results of the find command
 	    echo "Debug: Checking results in $temp_file"
-	    cat "$temp_file"  # Print the contents of the temp file
+	    cat "$temp_file"  
 
-	    # Check if the temp file is empty
 	    if [ -s "$temp_file" ]; then
 	        while read -r filepath; do
-	            filesize=$(stat -c%s "$filepath")  # Get file size in bytes
-	            creation_date=$(stat -c%y "$filepath")  # Get file creation date
+	            filesize=$(stat -c%s "$filepath")  
+	            creation_date=$(stat -c%y "$filepath")  
 	            echo "Found: $filepath"
 	            echo "Size: $filesize bytes"
 	            echo "Creation Date: $creation_date"
@@ -108,7 +105,6 @@ handle_choice(){
 	        echo "No occurrences of '$filename' found."
 	    fi
 
-	    # Clean up the temporary file
 	    rm "$temp_file"
 
 	    read -p "Press any key to return to the menu..."
