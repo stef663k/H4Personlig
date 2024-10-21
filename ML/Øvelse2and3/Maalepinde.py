@@ -28,6 +28,7 @@ def clean_maalepinde_text(text: str, danish_stopwords: set) -> str:
     text = re.sub(r'^\d+\.', '', text)
     text = re.sub(r'[^\w\s]', '', text) 
     text = re.sub(r'\d+', '', text) 
+    text = re.sub('\n\n', '\n', text)
     text = text.lower()
     words = text.split()
     cleaned_text = ' '.join([word for word in words if word not in danish_stopwords])
