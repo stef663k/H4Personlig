@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple C Web Server
+
+[Service]
+ExecStart=/usr/local/bin/webserver
+Restart=always
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
