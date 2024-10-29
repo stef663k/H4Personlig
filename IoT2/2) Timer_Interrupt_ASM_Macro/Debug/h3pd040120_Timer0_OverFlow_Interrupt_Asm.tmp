@@ -1,0 +1,44 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328PB"</DEVICE>
+ <WORKING_DIR>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\ProjectDefines.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\DirectiveDefines.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\MacroDefines.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\RAMDefines.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\TimerDefines.inc</FILE>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Debug\h3pd040120_Timer0_OverFlow_Interrupt_Asm.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>h3pd040120_Timer0_OverFlow_Interrupt_Asm.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>h3pd040120_Timer0_OverFlow_Interrupt_Asm.map</FILE>
+  <FILE>h3pd040120_Timer0_OverFlow_Interrupt_Asm.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <Timer0OverflowCounter><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\RAMDefines.inc</FILE><LINE>15</LINE></Timer0OverflowCounter>
+  <Timer0OverflowCounterStopValue><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\RAMDefines.inc</FILE><LINE>16</LINE></Timer0OverflowCounterStopValue>
+  <main><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\main.asm</FILE><LINE>47</LINE></main>
+  <Test0AdrInterrupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>213</LINE></Test0AdrInterrupt>
+  <Test1AdrInterrupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>218</LINE></Test1AdrInterrupt>
+  <TIMER0_OVERFLOW_INTERRUPT><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>128</LINE></TIMER0_OVERFLOW_INTERRUPT>
+  <SetupTimer0OverflowInterrupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>22</LINE></SetupTimer0OverflowInterrupt>
+  <EnableTimer0OverflowInterupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>67</LINE></EnableTimer0OverflowInterupt>
+  <DisableTimer0OverflowInterupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>95</LINE></DisableTimer0OverflowInterupt>
+  <IncrementTimer0OverflowCounter><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>179</LINE></IncrementTimer0OverflowCounter>
+  <DoneTreatingTimer0_Overflow_Interrupt><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\Timer.asm</FILE><LINE>186</LINE></DoneTreatingTimer0_Overflow_Interrupt>
+  <loop><FILE>c:\Lars\h4pd011124\IoT\Projektor\Timer_Interrupt_ASM_Macro\main.asm</FILE><LINE>82</LINE></loop>
+ </LABELS>
+</ASSEMBLER_INFO>
