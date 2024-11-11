@@ -5,6 +5,10 @@
 #include <avr/interrupt.h>
 #include "ProjectDefines.h"
 #include "Main.h"
+#define F_CPU 16000000UL
+#define BAUD 9600UL
+#define MyUBRR ((F_CPU / (16UL * BAUD)) - 1)
+
 
 static FILE uart_output = FDEV_SETUP_STREAM(uart_putch, NULL, _FDEV_SETUP_WRITE);
 static FILE uart_input = FDEV_SETUP_STREAM(NULL, uart_getch, _FDEV_SETUP_READ);
@@ -63,8 +67,8 @@ void UART_PrintChar(char c) {
 
 void UART_PrintHex(uint8_t value) {
 	const char hexDigits[] = "0123456789ABCDEF";
-	uart_putch(hexDigits[value >> 4], NULL); // Send high nibble
-	uart_putch(hexDigits[value & 0x0F], NULL); // Send low nibble
+	uart_putch(hexDigits[value >> 4], stdout); // Send high nibble
+	uart_putch(hexDigits[value & 0x0F], stdout); // Send low nibble
 }
 
 void UART_PrintBinary(uint8_t value) {

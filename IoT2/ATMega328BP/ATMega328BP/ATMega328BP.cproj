@@ -149,6 +149,12 @@
     <Compile Include="ProjectDefines.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="state_machine.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="state_machine.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="UART.c">
       <SubType>compile</SubType>
     </Compile>

@@ -1,0 +1,500 @@
+
+Bitvis_Kontra_Logisk.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000352  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002fe  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000352  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000384  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  000003c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000a52  00000000  00000000  000003ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000008fb  00000000  00000000  00000e3e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000004b9  00000000  00000000  00001739  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  00001bf4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000004ba  00000000  00000000  00001c48  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000008f  00000000  00000000  00002102  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  00002191  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 5a 00 	jmp	0xb4	; 0xb4 <__ctors_end>
+   4:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+   8:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+   c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  10:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  14:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  18:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  1c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  20:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  24:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  28:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  2c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  30:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  34:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  38:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  3c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  40:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  44:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  48:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  4c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  50:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  54:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  58:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  5c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  60:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  64:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  68:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  6c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  70:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  74:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  78:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  7c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  80:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  84:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  88:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  8c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  90:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  94:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  98:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  9c:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  a0:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  a4:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  a8:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  ac:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+  b0:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__bad_interrupt>
+
+000000b4 <__ctors_end>:
+  b4:	11 24       	eor	r1, r1
+  b6:	1f be       	out	0x3f, r1	; 63
+  b8:	cf ef       	ldi	r28, 0xFF	; 255
+  ba:	d8 e0       	ldi	r29, 0x08	; 8
+  bc:	de bf       	out	0x3e, r29	; 62
+  be:	cd bf       	out	0x3d, r28	; 61
+  c0:	0e 94 7a 00 	call	0xf4	; 0xf4 <main>
+  c4:	0c 94 7d 01 	jmp	0x2fa	; 0x2fa <_exit>
+
+000000c8 <__bad_interrupt>:
+  c8:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000cc <Add8BitNumbers>:
+#include <avr/io.h>
+#include "ProjectDefines.h"
+
+
+uint16_t Add8BitNumbers(uint8_t Number1, uint8_t Number2)
+{
+  cc:	cf 93       	push	r28
+  ce:	df 93       	push	r29
+  d0:	00 d0       	rcall	.+0      	; 0xd2 <Add8BitNumbers+0x6>
+  d2:	cd b7       	in	r28, 0x3d	; 61
+  d4:	de b7       	in	r29, 0x3e	; 62
+  d6:	89 83       	std	Y+1, r24	; 0x01
+  d8:	6a 83       	std	Y+2, r22	; 0x02
+	return (Number1 + Number2);
+  da:	89 81       	ldd	r24, Y+1	; 0x01
+  dc:	28 2f       	mov	r18, r24
+  de:	30 e0       	ldi	r19, 0x00	; 0
+  e0:	8a 81       	ldd	r24, Y+2	; 0x02
+  e2:	88 2f       	mov	r24, r24
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	82 0f       	add	r24, r18
+  e8:	93 1f       	adc	r25, r19
+}
+  ea:	0f 90       	pop	r0
+  ec:	0f 90       	pop	r0
+  ee:	df 91       	pop	r29
+  f0:	cf 91       	pop	r28
+  f2:	08 95       	ret
+
+000000f4 <main>:
+
+int main(void)
+{
+  f4:	cf 93       	push	r28
+  f6:	df 93       	push	r29
+  f8:	cd b7       	in	r28, 0x3d	; 61
+  fa:	de b7       	in	r29, 0x3e	; 62
+  fc:	2c 97       	sbiw	r28, 0x0c	; 12
+  fe:	0f b6       	in	r0, 0x3f	; 63
+ 100:	f8 94       	cli
+ 102:	de bf       	out	0x3e, r29	; 62
+ 104:	0f be       	out	0x3f, r0	; 63
+ 106:	cd bf       	out	0x3d, r28	; 61
+	uint8_t Var1 = 0x3E;
+ 108:	8e e3       	ldi	r24, 0x3E	; 62
+ 10a:	89 83       	std	Y+1, r24	; 0x01
+	uint8_t Var2 = 0x01;
+ 10c:	81 e0       	ldi	r24, 0x01	; 1
+ 10e:	8a 83       	std	Y+2, r24	; 0x02
+	// 0     0     0
+	// 0     1     0
+	// 1     0     0
+	// 1     1     1
+
+	Var3 = Var1 || Var2;
+ 110:	89 81       	ldd	r24, Y+1	; 0x01
+ 112:	88 23       	and	r24, r24
+ 114:	19 f4       	brne	.+6      	; 0x11c <main+0x28>
+ 116:	8a 81       	ldd	r24, Y+2	; 0x02
+ 118:	88 23       	and	r24, r24
+ 11a:	19 f0       	breq	.+6      	; 0x122 <main+0x2e>
+ 11c:	81 e0       	ldi	r24, 0x01	; 1
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	02 c0       	rjmp	.+4      	; 0x126 <main+0x32>
+ 122:	80 e0       	ldi	r24, 0x00	; 0
+ 124:	90 e0       	ldi	r25, 0x00	; 0
+ 126:	8b 83       	std	Y+3, r24	; 0x03
+	// Logisk OR. Hvis enten Var1 eller Var2 er forskellig fra 0, vil
+	// Var3 blive lig med 1. Hvis både Var1 og Var2 er lig med 0, vil
+	// Var3 blive lig med 0. Var3 kan således kun få værdien 0 eller 1 !!! 
+	
+	Var3M = Logical_Or_Operation_On_Integer_Level(Var1, Var2);
+ 128:	89 81       	ldd	r24, Y+1	; 0x01
+ 12a:	88 23       	and	r24, r24
+ 12c:	19 f4       	brne	.+6      	; 0x134 <main+0x40>
+ 12e:	8a 81       	ldd	r24, Y+2	; 0x02
+ 130:	88 23       	and	r24, r24
+ 132:	19 f0       	breq	.+6      	; 0x13a <main+0x46>
+ 134:	81 e0       	ldi	r24, 0x01	; 1
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	02 c0       	rjmp	.+4      	; 0x13e <main+0x4a>
+ 13a:	80 e0       	ldi	r24, 0x00	; 0
+ 13c:	90 e0       	ldi	r25, 0x00	; 0
+ 13e:	8c 83       	std	Y+4, r24	; 0x04
+	// sigende makro.
+
+	// For måske at gøre ovennævnte lidt mere klart, kan man også skrive 
+	// det på måden vist herunder. Paranteserne i udtrykket er kun 
+	// medtaget for overskuelighedens skyld og er ikke nødvendige. 
+	Var3 = (Var1 != 0) || (Var2 != 0);	
+ 140:	89 81       	ldd	r24, Y+1	; 0x01
+ 142:	88 23       	and	r24, r24
+ 144:	19 f4       	brne	.+6      	; 0x14c <main+0x58>
+ 146:	8a 81       	ldd	r24, Y+2	; 0x02
+ 148:	88 23       	and	r24, r24
+ 14a:	19 f0       	breq	.+6      	; 0x152 <main+0x5e>
+ 14c:	81 e0       	ldi	r24, 0x01	; 1
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	02 c0       	rjmp	.+4      	; 0x156 <main+0x62>
+ 152:	80 e0       	ldi	r24, 0x00	; 0
+ 154:	90 e0       	ldi	r25, 0x00	; 0
+ 156:	8b 83       	std	Y+3, r24	; 0x03
+
+	Var4 = Var1 | Var2;
+ 158:	99 81       	ldd	r25, Y+1	; 0x01
+ 15a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 15c:	89 2b       	or	r24, r25
+ 15e:	8d 83       	std	Y+5, r24	; 0x05
+	// Bitvis OR. Hver bit position i Var1 udfører en OR operation på den 
+	// samme bit position i Var2. Var4 vil således kunne få alle værdier mellem 
+	// 0 og 255 (0x00 - 0xFF).
+	
+	Var4M = Bitwise_Or_Operation_On_Bit_Level(Var1, Var2);
+ 160:	99 81       	ldd	r25, Y+1	; 0x01
+ 162:	8a 81       	ldd	r24, Y+2	; 0x02
+ 164:	89 2b       	or	r24, r25
+ 166:	8e 83       	std	Y+6, r24	; 0x06
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
+	
+	Var5 = Var1 && Var2;
+ 168:	89 81       	ldd	r24, Y+1	; 0x01
+ 16a:	88 23       	and	r24, r24
+ 16c:	31 f0       	breq	.+12     	; 0x17a <main+0x86>
+ 16e:	8a 81       	ldd	r24, Y+2	; 0x02
+ 170:	88 23       	and	r24, r24
+ 172:	19 f0       	breq	.+6      	; 0x17a <main+0x86>
+ 174:	81 e0       	ldi	r24, 0x01	; 1
+ 176:	90 e0       	ldi	r25, 0x00	; 0
+ 178:	02 c0       	rjmp	.+4      	; 0x17e <main+0x8a>
+ 17a:	80 e0       	ldi	r24, 0x00	; 0
+ 17c:	90 e0       	ldi	r25, 0x00	; 0
+ 17e:	8f 83       	std	Y+7, r24	; 0x07
+	// Logisk AND. Hvis både Var1 og Var2 er forskellig fra 0, vil
+	// Var5 blive lig med 1. Hvis enten Var1 eller Var2 er lig med 0, vil
+	// Var5 blive lig med 0. Var5 kan således kun få værdien 0 eller 1 !!!
+	
+	Var5M = Logical_And_Operation_On_Integer_Level(Var1, Var2);
+ 180:	89 81       	ldd	r24, Y+1	; 0x01
+ 182:	88 23       	and	r24, r24
+ 184:	31 f0       	breq	.+12     	; 0x192 <main+0x9e>
+ 186:	8a 81       	ldd	r24, Y+2	; 0x02
+ 188:	88 23       	and	r24, r24
+ 18a:	19 f0       	breq	.+6      	; 0x192 <main+0x9e>
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	02 c0       	rjmp	.+4      	; 0x196 <main+0xa2>
+ 192:	80 e0       	ldi	r24, 0x00	; 0
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	88 87       	std	Y+8, r24	; 0x08
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
+
+	Var6 = Var1 & Var2;
+ 198:	99 81       	ldd	r25, Y+1	; 0x01
+ 19a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 19c:	89 23       	and	r24, r25
+ 19e:	89 87       	std	Y+9, r24	; 0x09
+	// Bitvis AND. Hver bit position i Var1 udfører en AND operation på den
+	// samme bit position i Var2. Var6 vil således kunne få alle værdier mellem
+	// 0 og 255 (0x00 - 0xFF)
+	
+	Var6M = Bitwise_And_Operation_On_Bit_Level(Var1, Var2);
+ 1a0:	99 81       	ldd	r25, Y+1	; 0x01
+ 1a2:	8a 81       	ldd	r24, Y+2	; 0x02
+ 1a4:	89 23       	and	r24, r25
+ 1a6:	8a 87       	std	Y+10, r24	; 0x0a
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
+
+	AddResult = Add8BitNumbers(0xaa, 0xbb);
+ 1a8:	6b eb       	ldi	r22, 0xBB	; 187
+ 1aa:	8a ea       	ldi	r24, 0xAA	; 170
+ 1ac:	0e 94 66 00 	call	0xcc	; 0xcc <Add8BitNumbers>
+ 1b0:	9c 87       	std	Y+12, r25	; 0x0c
+ 1b2:	8b 87       	std	Y+11, r24	; 0x0b
+
+	DDRB = 0xFF;
+ 1b4:	84 e2       	ldi	r24, 0x24	; 36
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	2f ef       	ldi	r18, 0xFF	; 255
+ 1ba:	fc 01       	movw	r30, r24
+ 1bc:	20 83       	st	Z, r18
+
+	PORTB = (1 << PB4) || (1 << PB2);
+ 1be:	85 e2       	ldi	r24, 0x25	; 37
+ 1c0:	90 e0       	ldi	r25, 0x00	; 0
+ 1c2:	21 e0       	ldi	r18, 0x01	; 1
+ 1c4:	fc 01       	movw	r30, r24
+ 1c6:	20 83       	st	Z, r18
+	// Forkert måde at sætte PORT B op på. Port B vil altid få værdien 1. Det vil sige Port B
+	// bit position 0 vil blive sat. Og det var ikke vores mening !!!
+
+	PORTB = (1 << PB4) | (1 << PB2);
+ 1c8:	85 e2       	ldi	r24, 0x25	; 37
+ 1ca:	90 e0       	ldi	r25, 0x00	; 0
+ 1cc:	24 e1       	ldi	r18, 0x14	; 20
+ 1ce:	fc 01       	movw	r30, r24
+ 1d0:	20 83       	st	Z, r18
+	// Rigtig måde at sætte PORT B op på. Port B vil nu få værdien 0x14. Og det var det, vi gerne 
+	// ville. Sætte bit 2 og bit 4 i Port B og resette alle andre bit i Port B.
+
+	PORTB |= (1 << PB0);
+ 1d2:	85 e2       	ldi	r24, 0x25	; 37
+ 1d4:	90 e0       	ldi	r25, 0x00	; 0
+ 1d6:	25 e2       	ldi	r18, 0x25	; 37
+ 1d8:	30 e0       	ldi	r19, 0x00	; 0
+ 1da:	f9 01       	movw	r30, r18
+ 1dc:	20 81       	ld	r18, Z
+ 1de:	21 60       	ori	r18, 0x01	; 1
+ 1e0:	fc 01       	movw	r30, r24
+ 1e2:	20 83       	st	Z, r18
+	// Efter den initielle opsætning af Port B ønsker vi nu at sætte bit 0 i Port B uden at røre 
+	// ved nogen af de andre bit i PORT B.
+
+	PORTB = PORTB | (1 << PB0);
+ 1e4:	85 e2       	ldi	r24, 0x25	; 37
+ 1e6:	90 e0       	ldi	r25, 0x00	; 0
+ 1e8:	25 e2       	ldi	r18, 0x25	; 37
+ 1ea:	30 e0       	ldi	r19, 0x00	; 0
+ 1ec:	f9 01       	movw	r30, r18
+ 1ee:	20 81       	ld	r18, Z
+ 1f0:	21 60       	ori	r18, 0x01	; 1
+ 1f2:	fc 01       	movw	r30, r24
+ 1f4:	20 83       	st	Z, r18
+	// Sætningen i linje 76 kunne også være skrevet som vist i linje 80 
+	
+	PORTB |= ( (1 << PB7) | (1 << PB6) );
+ 1f6:	85 e2       	ldi	r24, 0x25	; 37
+ 1f8:	90 e0       	ldi	r25, 0x00	; 0
+ 1fa:	25 e2       	ldi	r18, 0x25	; 37
+ 1fc:	30 e0       	ldi	r19, 0x00	; 0
+ 1fe:	f9 01       	movw	r30, r18
+ 200:	20 81       	ld	r18, Z
+ 202:	20 6c       	ori	r18, 0xC0	; 192
+ 204:	fc 01       	movw	r30, r24
+ 206:	20 83       	st	Z, r18
+	// Efter den initielle opsætning af Port B ønsker vi nu at sætte bit 7 og bit 6 i Port B uden at 
+	// røre ved nogen af de andre bit i PORT B.
+
+	PORTB &= ~(1 << PB2);
+ 208:	85 e2       	ldi	r24, 0x25	; 37
+ 20a:	90 e0       	ldi	r25, 0x00	; 0
+ 20c:	25 e2       	ldi	r18, 0x25	; 37
+ 20e:	30 e0       	ldi	r19, 0x00	; 0
+ 210:	f9 01       	movw	r30, r18
+ 212:	20 81       	ld	r18, Z
+ 214:	2b 7f       	andi	r18, 0xFB	; 251
+ 216:	fc 01       	movw	r30, r24
+ 218:	20 83       	st	Z, r18
+	// Efter den initielle opsætning af Port B ønsker vi nu at resette bit 2 i Port B uden at røre
+	// ved nogen af de andre bit i PORT B.
+
+	PORTB &= ~( (1 << PB7) | (1 << PB6) );
+ 21a:	85 e2       	ldi	r24, 0x25	; 37
+ 21c:	90 e0       	ldi	r25, 0x00	; 0
+ 21e:	25 e2       	ldi	r18, 0x25	; 37
+ 220:	30 e0       	ldi	r19, 0x00	; 0
+ 222:	f9 01       	movw	r30, r18
+ 224:	20 81       	ld	r18, Z
+ 226:	2f 73       	andi	r18, 0x3F	; 63
+ 228:	fc 01       	movw	r30, r24
+ 22a:	20 83       	st	Z, r18
+	// Efter den initielle opsætning af Port B ønsker vi nu at resette bit 7 og bit 6 i Port B uden 
+	// at røre ved nogen af de andre bit i PORT B.
+	
+	Var4 = (Var1 != 0) |  (Var2 != 0);
+ 22c:	91 e0       	ldi	r25, 0x01	; 1
+ 22e:	89 81       	ldd	r24, Y+1	; 0x01
+ 230:	88 23       	and	r24, r24
+ 232:	09 f4       	brne	.+2      	; 0x236 <main+0x142>
+ 234:	90 e0       	ldi	r25, 0x00	; 0
+ 236:	81 e0       	ldi	r24, 0x01	; 1
+ 238:	2a 81       	ldd	r18, Y+2	; 0x02
+ 23a:	22 23       	and	r18, r18
+ 23c:	09 f4       	brne	.+2      	; 0x240 <main+0x14c>
+ 23e:	80 e0       	ldi	r24, 0x00	; 0
+ 240:	89 2b       	or	r24, r25
+ 242:	8d 83       	std	Y+5, r24	; 0x05
+	// Kodelinjen herover er lidt fræk. Her blander vi faktisk en bitvis or operator
+	// med 2 logiske operatorer != 0. Derfor vil vores vores output (afhængig af værdierne
+	// af Var1 og Var2 kun kunne få værdien 0 eller 1.
+	
+	Var4 = (Var1 != 0) ||  (Var2 != 0);
+ 244:	89 81       	ldd	r24, Y+1	; 0x01
+ 246:	88 23       	and	r24, r24
+ 248:	19 f4       	brne	.+6      	; 0x250 <main+0x15c>
+ 24a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 24c:	88 23       	and	r24, r24
+ 24e:	19 f0       	breq	.+6      	; 0x256 <main+0x162>
+ 250:	81 e0       	ldi	r24, 0x01	; 1
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	02 c0       	rjmp	.+4      	; 0x25a <main+0x166>
+ 256:	80 e0       	ldi	r24, 0x00	; 0
+ 258:	90 e0       	ldi	r25, 0x00	; 0
+ 25a:	8d 83       	std	Y+5, r24	; 0x05
+	// Kodelinjen herover indeholder "kun" logiske operatorer. Derfor vil vores vores output (afhængig af værdierne
+	// af Var1 og Var2 kun kunne få værdien 0 eller 1.
+	
+	Var4 = (Var2 != 0) |  Var1;
+ 25c:	81 e0       	ldi	r24, 0x01	; 1
+ 25e:	9a 81       	ldd	r25, Y+2	; 0x02
+ 260:	99 23       	and	r25, r25
+ 262:	09 f4       	brne	.+2      	; 0x266 <main+0x172>
+ 264:	80 e0       	ldi	r24, 0x00	; 0
+ 266:	98 2f       	mov	r25, r24
+ 268:	89 81       	ldd	r24, Y+1	; 0x01
+ 26a:	89 2b       	or	r24, r25
+ 26c:	8d 83       	std	Y+5, r24	; 0x05
+	// Igen er vi lidt frække og blander bitvise og logiske operatorer. Her vil vores output (afhængig
+	// af værdierne af Var1 og Var2) kunne antage alle værdier mellem 0 og 255.
+	
+	Var4 = (Var1 != 0) | (Var2 != 0) | Var1;
+ 26e:	91 e0       	ldi	r25, 0x01	; 1
+ 270:	89 81       	ldd	r24, Y+1	; 0x01
+ 272:	88 23       	and	r24, r24
+ 274:	09 f4       	brne	.+2      	; 0x278 <main+0x184>
+ 276:	90 e0       	ldi	r25, 0x00	; 0
+ 278:	81 e0       	ldi	r24, 0x01	; 1
+ 27a:	2a 81       	ldd	r18, Y+2	; 0x02
+ 27c:	22 23       	and	r18, r18
+ 27e:	09 f4       	brne	.+2      	; 0x282 <main+0x18e>
+ 280:	80 e0       	ldi	r24, 0x00	; 0
+ 282:	89 2b       	or	r24, r25
+ 284:	98 2f       	mov	r25, r24
+ 286:	89 81       	ldd	r24, Y+1	; 0x01
+ 288:	89 2b       	or	r24, r25
+ 28a:	8d 83       	std	Y+5, r24	; 0x05
+	// Igen er vi lidt frække og blander bitvise og logiske operatorer. Her vil vores output (afhængig
+	// af værdierne af Var1 og Var2) kunne antage alle værdier mellem 0 og 255.
+	
+	Var4 = (Var1 != 0 || Var2 != 0) | Var1;
+ 28c:	89 81       	ldd	r24, Y+1	; 0x01
+ 28e:	88 23       	and	r24, r24
+ 290:	19 f4       	brne	.+6      	; 0x298 <main+0x1a4>
+ 292:	8a 81       	ldd	r24, Y+2	; 0x02
+ 294:	88 23       	and	r24, r24
+ 296:	19 f0       	breq	.+6      	; 0x29e <main+0x1aa>
+ 298:	81 e0       	ldi	r24, 0x01	; 1
+ 29a:	90 e0       	ldi	r25, 0x00	; 0
+ 29c:	02 c0       	rjmp	.+4      	; 0x2a2 <main+0x1ae>
+ 29e:	80 e0       	ldi	r24, 0x00	; 0
+ 2a0:	90 e0       	ldi	r25, 0x00	; 0
+ 2a2:	98 2f       	mov	r25, r24
+ 2a4:	89 81       	ldd	r24, Y+1	; 0x01
+ 2a6:	89 2b       	or	r24, r25
+ 2a8:	8d 83       	std	Y+5, r24	; 0x05
+	// Igen er vi lidt frække og blander bitvise og logiske operatorer. Her vil vores output (afhængig
+	// af værdierne af Var1 og Var2) kunne antage alle værdier mellem 0 og 255.
+	
+	Var4 = (Var1 != 0) |  (Var2 != 0 | Var1);
+ 2aa:	81 e0       	ldi	r24, 0x01	; 1
+ 2ac:	99 81       	ldd	r25, Y+1	; 0x01
+ 2ae:	99 23       	and	r25, r25
+ 2b0:	09 f4       	brne	.+2      	; 0x2b4 <main+0x1c0>
+ 2b2:	80 e0       	ldi	r24, 0x00	; 0
+ 2b4:	28 2f       	mov	r18, r24
+ 2b6:	81 e0       	ldi	r24, 0x01	; 1
+ 2b8:	9a 81       	ldd	r25, Y+2	; 0x02
+ 2ba:	99 23       	and	r25, r25
+ 2bc:	09 f4       	brne	.+2      	; 0x2c0 <main+0x1cc>
+ 2be:	80 e0       	ldi	r24, 0x00	; 0
+ 2c0:	98 2f       	mov	r25, r24
+ 2c2:	89 81       	ldd	r24, Y+1	; 0x01
+ 2c4:	89 2b       	or	r24, r25
+ 2c6:	82 2b       	or	r24, r18
+ 2c8:	8d 83       	std	Y+5, r24	; 0x05
+	// Igen er vi lidt frække og blander bitvise og logiske operatorer. Her vil vores output (afhængig
+	// af værdierne af Var1 og Var2) kunne antage alle værdier mellem 0 og 255.
+	
+	Var4 = (Var1 != 0) ||  (Var2 != 0 | Var1);
+ 2ca:	89 81       	ldd	r24, Y+1	; 0x01
+ 2cc:	88 23       	and	r24, r24
+ 2ce:	71 f4       	brne	.+28     	; 0x2ec <main+0x1f8>
+ 2d0:	81 e0       	ldi	r24, 0x01	; 1
+ 2d2:	9a 81       	ldd	r25, Y+2	; 0x02
+ 2d4:	99 23       	and	r25, r25
+ 2d6:	09 f4       	brne	.+2      	; 0x2da <main+0x1e6>
+ 2d8:	80 e0       	ldi	r24, 0x00	; 0
+ 2da:	28 2f       	mov	r18, r24
+ 2dc:	30 e0       	ldi	r19, 0x00	; 0
+ 2de:	89 81       	ldd	r24, Y+1	; 0x01
+ 2e0:	88 2f       	mov	r24, r24
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	82 2b       	or	r24, r18
+ 2e6:	93 2b       	or	r25, r19
+ 2e8:	89 2b       	or	r24, r25
+ 2ea:	19 f0       	breq	.+6      	; 0x2f2 <main+0x1fe>
+ 2ec:	81 e0       	ldi	r24, 0x01	; 1
+ 2ee:	90 e0       	ldi	r25, 0x00	; 0
+ 2f0:	02 c0       	rjmp	.+4      	; 0x2f6 <main+0x202>
+ 2f2:	80 e0       	ldi	r24, 0x00	; 0
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+ 2f6:	8d 83       	std	Y+5, r24	; 0x05
+	// af værdierne af Var1 og Var2) kunne antage alle værdier mellem 0 og 255. 
+
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+ 2f8:	ff cf       	rjmp	.-2      	; 0x2f8 <main+0x204>
+
+000002fa <_exit>:
+ 2fa:	f8 94       	cli
+
+000002fc <__stop_program>:
+ 2fc:	ff cf       	rjmp	.-2      	; 0x2fc <__stop_program>

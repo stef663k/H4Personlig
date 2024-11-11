@@ -6,8 +6,8 @@
  */ 
 
 #include <avr/io.h>
-#include "bitwise_operations.h"
-#include "UART.h"
+#include "ProjectDefines.h"
+
 
 uint16_t Add8BitNumbers(uint8_t Number1, uint8_t Number2)
 {
@@ -16,20 +16,21 @@ uint16_t Add8BitNumbers(uint8_t Number1, uint8_t Number2)
 
 int main(void)
 {
-	
-	uint8_t Var1 = 0xF8;
+	uint8_t Var1 = 0x3E;
 	uint8_t Var2 = 0x01;
 
 	uint8_t Var3;
 	uint8_t Var4;
 	uint8_t Var5;
 	uint8_t Var6;
+	
+	uint8_t Var3M;
+	uint8_t Var4M;
+	uint8_t Var5M;
+	uint8_t Var6M;
 
 	uint16_t AddResult;
-	
-	UART_Init(9600);
-	uint16_t initialValue = Var1;
-	simulateBitSetting(initialValue);
+
 	// Sandhedstabel for OR
 	// 0     0     0
 	// 0     1     1
@@ -46,26 +47,42 @@ int main(void)
 	// Logisk OR. Hvis enten Var1 eller Var2 er forskellig fra 0, vil
 	// Var3 blive lig med 1. Hvis både Var1 og Var2 er lig med 0, vil
 	// Var3 blive lig med 0. Var3 kan således kun få værdien 0 eller 1 !!! 
+	
+	Var3M = Logical_Or_Operation_On_Integer_Level(Var1, Var2);
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en 
+	// sigende makro.
 
 	// For måske at gøre ovennævnte lidt mere klart, kan man også skrive 
 	// det på måden vist herunder. Paranteserne i udtrykket er kun 
 	// medtaget for overskuelighedens skyld og er ikke nødvendige. 
 	Var3 = (Var1 != 0) || (Var2 != 0);	
 
-	Var4 = Var1 |  Var2;
+	Var4 = Var1 | Var2;
 	// Bitvis OR. Hver bit position i Var1 udfører en OR operation på den 
 	// samme bit position i Var2. Var4 vil således kunne få alle værdier mellem 
 	// 0 og 255 (0x00 - 0xFF).
+	
+	Var4M = Bitwise_Or_Operation_On_Bit_Level(Var1, Var2);
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
 	
 	Var5 = Var1 && Var2;
 	// Logisk AND. Hvis både Var1 og Var2 er forskellig fra 0, vil
 	// Var5 blive lig med 1. Hvis enten Var1 eller Var2 er lig med 0, vil
 	// Var5 blive lig med 0. Var5 kan således kun få værdien 0 eller 1 !!!
+	
+	Var5M = Logical_And_Operation_On_Integer_Level(Var1, Var2);
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
 
 	Var6 = Var1 & Var2;
 	// Bitvis AND. Hver bit position i Var1 udfører en AND operation på den
 	// samme bit position i Var2. Var6 vil således kunne få alle værdier mellem
 	// 0 og 255 (0x00 - 0xFF)
+	
+	Var6M = Bitwise_And_Operation_On_Bit_Level(Var1, Var2);
+	// Koden her gør det samme koden ovenover. Nu bare ved brug af en
+	// sigende makro.
 
 	AddResult = Add8BitNumbers(0xaa, 0xbb);
 

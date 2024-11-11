@@ -5,11 +5,9 @@
 #ifndef PROJECTDEFINES_H_
 #define PROJECTDEFINES_H_
 
-#define F_CPU 16000000UL
-#define BAUD 19200UL
+
 #define UART_NORMAL_MODE
 
-#define MyUBRR ((F_CPU / (16UL * BAUD)) - 1)
 
 //#if defined (_AVR_IOM168_H_) || defined (_AVR_IOM328P_H_)
 //#define USR_Vect_Num USART_RX_vect

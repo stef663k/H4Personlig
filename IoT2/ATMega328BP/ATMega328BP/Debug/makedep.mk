@@ -6,5 +6,7 @@ bitwise_operations.c
 
 main.c
 
+state_machine.c
+
 UART.c
 
