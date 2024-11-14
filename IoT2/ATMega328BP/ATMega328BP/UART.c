@@ -15,43 +15,44 @@ static FILE uart_input = FDEV_SETUP_STREAM(NULL, uart_getch, _FDEV_SETUP_READ);
 
 void RS232Init(void) {
 	uint16_t ubrr = MyUBRR;
-	UBRRL = (unsigned char)(ubrr & 0xff);
-	UBRRH = (unsigned char)(ubrr >> 8);
-	
+	UBRR1L = (unsigned char)(ubrr & 0xff);  
+	UBRR1H = (unsigned char)(ubrr >> 8);    
+
 	#ifdef UART_NORMAL_MODE
-	UCSRA = 0x00;
+	UCSR1A = 0x00;  
 	#else
-	UCSRA = (1 << U2X);
+	UCSR1A = (1 << U2X1);  
 	#endif
 
-	UCSRB = (1 << RXEN) | (1 << TXEN);
-	UCSRC = (1 << UCSZ1) | (1 << UCSZ0);
+	UCSR1B = (1 << RXEN1) | (1 << TXEN1);  
+	UCSR1C = (1 << UCSZ11) | (1 << UCSZ10);  
 
 	stdout = &uart_output;
 	stdin = &uart_input;
 }
 
+
 void Enable_UART_Receive_Interrupt() {
-	UCSRB |= (1 << RXCIE);
+	UCSR1B |= (1 << RXCIE);
 }
 
 void Disable_UART_Receive_Interrupt() {
-	UCSRB &= ~(1 << RXCIE);
+	UCSR1B &= ~(1 << RXCIE);
 }
 
 int uart_getch(FILE* stream) {
-	while (!(UCSRA & (1 << RXC)));
-	return UDR;
+	while (!(UCSR1A & (1 << RXC1)));
+	return UDR1;
 }
 
 int uart_putch(char ch, FILE* stream) {
-	while (!(UCSRA & (1 << UDRE)));
-	UDR = ch;
+	while (!(UCSR1A & (1 << UDRE1)));
+	UDR1 = ch;
 	return 0;
 }
 
 ISR(USART_RX_vect) {
-	char ReceivedByte = UDR;
+	char ReceivedByte = UDR1;
 	ReceiveNewTimeoutValue(&ReceivedByte);
 }
 

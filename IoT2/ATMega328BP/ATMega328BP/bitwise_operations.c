@@ -51,34 +51,42 @@ void HandleUARTCommand(char command, uint8_t positions) {
 	if (command == 'S') {
 		for (uint8_t i = 0; i < 8; i++) {
 			if (positions & (1 << i)) {
-				registerValue = setBit(registerValue, i);  
+				registerValue = setBit(registerValue, i);
 			}
 		}
 		UART_PrintString("Bits set: ");
-		} else if (command == 'C') {
+	}
+	else if (command == 'C') {
 		for (uint8_t i = 0; i < 8; i++) {
 			if (positions & (1 << i)) {
-				registerValue = clearBit(registerValue, i);  
+				registerValue = clearBit(registerValue, i);
 			}
 		}
 		UART_PrintString("Bits cleared: ");
-		} else if (command == 'H') {  
+	}
+	else if (command == 'H') {
+		for (uint8_t i = 0; i < 8; i++) {
 			if (positions & (1 << i)) {
-				registerValue = setHex(registerValue, i);  
+				registerValue = setHex(registerValue, i);
 			}
 		}
 		UART_PrintString("Hex Values Set: ");
-		} else if (command == 'D') {  
+	}
+	else if (command == 'D') {
 		for (uint8_t i = 0; i < 8; i++) {
 			if (positions & (1 << i)) {
-				registerValue = clearHex(registerValue, i);  
+				registerValue = clearHex(registerValue, i);
 			}
 		}
 		UART_PrintString("Hex Values Cleared: ");
-		} else {
+	}
+	else {
 		UART_PrintString("Invalid command.\n");
 		return;
 	}
 
-	UART_PrintHex(registerValue);  
+	UART_PrintHex(registerValue);
+	UART_PrintString("\n");
+}
+
 

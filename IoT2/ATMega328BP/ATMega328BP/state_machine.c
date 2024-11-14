@@ -11,45 +11,77 @@ typedef enum {
 } State;
 
 void handle_state_machine(State *currentState, char recivedChar, uint8_t *address) {
-	static char hexBuffer[3] = {0};
+	static char hexBuffer[3] = {0};  // Buffer for two hex characters and null terminator
 	static uint8_t hexIndex = 0;
-	
-	UART_PrintString("Recieved Char: ");
+
+	UART_PrintString("Received Char: ");
 	UART_PrintHex((uint8_t)recivedChar);
 	UART_PrintString("\n");
+
+	UART_PrintString("Current State: ");
+	switch (*currentState) {
+		case Modtag_Adresse:
+		UART_PrintString("Modtag_Adresse\n");
+		break;
+		case Modtag_Bit_Position_I_Adresse:
+		UART_PrintString("Modtag_Bit_Position_I_Adresse\n");
+		break;
+		case Modtag_Bit_Position_Vaerdi:
+		UART_PrintString("Modtag_Bit_Position_Vaerdi\n");
+		break;
+		default:
+		UART_PrintString("Unknown State\n");
+		break;
+	}
 
 	switch (*currentState) {
 		case Modtag_Adresse:
 		if (recivedChar == ':') {
+			// Convert the buffer to the address and print it
 			*address = (uint8_t)strtol(hexBuffer, NULL, 16);
-			
+
 			UART_PrintString("Received address: 0x");
-			UART_PrintHex(*address); // Print the address in hexadecimal
+			UART_PrintHex(*address);
 			UART_PrintString("\n");
 
-			// Reset for the next address
+			// Reset buffer for next address
 			hexIndex = 0;
 			hexBuffer[0] = '\0';
+
+			// Transition to the next state
 			*currentState = Modtag_Bit_Position_I_Adresse;
-		}
-		else if (isxdigit(recivedChar) && hexIndex < 2) {
+			} else if (isxdigit(recivedChar) && hexIndex < 2) {
+			// Fill the hexBuffer with received characters
 			hexBuffer[hexIndex++] = recivedChar;
-			hexBuffer[hexIndex] = '\0';
+			hexBuffer[hexIndex] = '\0';  // Ensure null termination
+			} else {
+			UART_PrintString("Unexpected character received: ");
+			UART_PrintChar(recivedChar);
+			UART_PrintString("\n");
 		}
 		break;
 
 		case Modtag_Bit_Position_I_Adresse:
-		UART_PrintString("Enter bit position for address: 0x");
-		UART_PrintHex(*address);
-		UART_PrintString("\n");
+		if (isxdigit(recivedChar)) {
+			uint8_t bitPosition = recivedChar - '0'; 
+			UART_PrintString("Enter bit position for address: 0x");
+			UART_PrintHex(bitPosition);
+			UART_PrintString("\n");
 
-		*currentState = Modtag_Bit_Position_Vaerdi;
+			*currentState = Modtag_Bit_Position_Vaerdi;
+			} else {
+			UART_PrintString("Invalid bit position, please enter a valid position (0-9)\n");
+		}
 		break;
 
 		case Modtag_Bit_Position_Vaerdi:
-		UART_PrintString("Enter bit value (0 or 1) for position\n");
-		
-		*currentState = Modtag_Adresse;  // Reset to wait for the next address
+		if (recivedChar == '0' || recivedChar == '1') {
+			UART_PrintString("Valid bit value received\n");
+
+			*currentState = Modtag_Adresse;
+			} else {
+			UART_PrintString("Invalid bit value, please enter 0 or 1\n");
+		}
 		break;
 
 		default:
@@ -57,3 +89,4 @@ void handle_state_machine(State *currentState, char recivedChar, uint8_t *addres
 		break;
 	}
 }
+
