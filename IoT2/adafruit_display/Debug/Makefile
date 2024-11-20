@@ -89,7 +89,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+= 
 
-LINKER_SCRIPT_DEP+= 
+LINKER_SCRIPT_DEP+=  \
+../custom.ld
 
 
 # AVR32/GNU C Compiler

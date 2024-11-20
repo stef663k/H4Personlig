@@ -106,7 +106,18 @@ typedef enum
 
 #define NumberBase 10
 #define CharArrayEndCharacter '\0'
-#define MAX_NUMBER_OF_LINES_IN_DISPLAY	8
+	#define MAX_NUMBER_OF_LINES_IN_DISPLAY	8
+	#define UART_BUFFER_SIZE 64
+	#define MAX_STRING_LENGHT 8
+
+typedef struct{
+	char buffer[UART_BUFFER_SIZE];
+	volatile uint8_t head;
+	volatile uint8_t tail;
+		
+} UART_Buffer;
+
+extern UART_Buffer uart_rx_buffer;
 
 typedef void (*Function_Pointer_With_No_Parameters)(void);
 typedef void (*Function_Pointer_With_One_Uint16_t_Parameter)(uint16_t);

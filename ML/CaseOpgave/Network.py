@@ -21,6 +21,9 @@ class Network(object):
     
     def set_weights(self, weights):
         self.weights = weights
+
+    def set_biases(self, biases):
+        self.biases = biases
     
     # define the sigmoid function
     def sigmoid(self, z):

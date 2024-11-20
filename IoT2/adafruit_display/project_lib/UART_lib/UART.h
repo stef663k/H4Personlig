@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "../ProjectDefines.h"
+
 
 #define BAUD 9600UL
 
@@ -23,6 +25,9 @@ void UART_PrintChar(char c);
 void UART_PrintString(const char* str);
 void UART_PrintHex(uint8_t value);
 void UART_PrintBinary(uint8_t value);
+int UART_BufferGet(UART_Buffer* buf, char* data);
+void UART_BufferPut(UART_Buffer* buf, char data);
+
  
 void HandleUARTCommand(char command, uint8_t bitPosition);
 

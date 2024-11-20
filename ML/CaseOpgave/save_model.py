@@ -1,5 +1,4 @@
-import os
-import MNISTNeuralNetwork
+from MNISTNeuralNetwork import MNISTNeuralNetwork
 
 # Example usage
 data_path = r'C:\Users\Stefan\Desktop\mnistData' 
@@ -12,12 +11,14 @@ mnist_nn = MNISTNeuralNetwork(network_architecture, data_path)
 mnist_nn.load_data()
 
 # Train the network
-mnist_nn.train(epochs=150, mini_batch_size=128, learning_rate=1.0)
+mnist_nn.train(epochs=150, mini_batch_size=128, learning_rate=0.1)
 
 # Save the network data and weights
 mnist_nn.save_all('mnist_data.h5')
 
 # Print the test accuracy
-print("Test accuracy:", mnist_nn.evaluate())
-final_accuracy = mnist_nn.evaluate() / 10000 * 100
-print(f"Final accuracy: {final_accuracy}%")
+accuracy = mnist_nn.evaluate()
+n_test = len(mnist_nn.test_data)  # Get the number of test samples
+final_accuracy = accuracy / n_test * 100  # Calculate percentage
+print(f"Test accuracy: {accuracy} out of {n_test}")
+print(f"Final accuracy: {final_accuracy:.2f}%")

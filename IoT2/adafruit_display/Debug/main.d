@@ -18,9 +18,10 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\eeprom.h \
- .././project_lib/display_lib/ssd1306.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- .././project_lib/display_lib/font.h .././project_lib/display_lib/twi.h \
+ .././project_lib/../project_lib/ProjectDefines.h \
+ .././project_lib/../project_lib/../main.h \
+ .././project_lib/diplay_lib/ssd1306.h .././project_lib/diplay_lib/font.h \
+ .././project_lib/diplay_lib/twi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -63,12 +64,14 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\eeprom.h:
 
-.././project_lib/display_lib/ssd1306.h:
+.././project_lib/../project_lib/ProjectDefines.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+.././project_lib/../project_lib/../main.h:
 
-.././project_lib/display_lib/font.h:
+.././project_lib/diplay_lib/ssd1306.h:
 
-.././project_lib/display_lib/twi.h:
+.././project_lib/diplay_lib/font.h:
+
+.././project_lib/diplay_lib/twi.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:

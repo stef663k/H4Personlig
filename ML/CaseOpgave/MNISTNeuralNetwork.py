@@ -1,5 +1,5 @@
 import os
-import Network
+from Network import Network
 import h5py
 import numpy as np
 from mnist import MNIST
@@ -7,37 +7,42 @@ from sklearn.utils import shuffle
 
 class MNISTNeuralNetwork:
     def __init__(self, network_architecture, data_path):
-        self.network = Network.Network(network_architecture)
+        self.network = Network(network_architecture)
         self.data_path = data_path
 
     def save_all(self, filename):
         architecture = self.network.get_architecture()
         weights = self.network.get_weights()
+        biases = self.network.get_biases()
         
         with h5py.File(filename, 'w') as f:
-            f.create_dataset('images', data=self.train_images)
-            f.create_dataset('labels', data=self.train_labels)
             f.create_dataset('architecture', data=np.array(architecture))
             
-            for i, weight in enumerate(weights):
+            # Save weights and biases
+            for i, (weight, bias) in enumerate(zip(weights, biases)):
                 f.create_dataset(f'weights_layer_{i}', data=weight)
+                f.create_dataset(f'biases_layer_{i}', data=bias)
         
         print(f"All data saved to {filename}")
-
+    
     def load_all(self, filename):
         with h5py.File(filename, 'r') as f:
-            self.train_images = f['images'][:]
-            self.train_labels = f['labels'][:]
-            
+            # Load architecture
             architecture = f['architecture'][:]
+            
             weights = []
+            biases = []
             for i in range(len(architecture) - 1):
                 weight = f[f'weights_layer_{i}'][:]
+                bias = f[f'biases_layer_{i}'][:]
                 weights.append(weight)
+                biases.append(bias)
+            
+            # Set weights and biases in the network
+            self.network = Network(architecture.tolist())
+            self.network.set_weights(weights)
+            self.network.set_biases(biases)
         
-        # Set the architecture and weights of the loaded network
-        self.network = Network.Network(architecture.tolist())
-        self.network.set_weights(weights)
         print(f"Data and network loaded from {filename}")
     
     def load_data(self):

@@ -1,1 +1,8 @@
 python-mnist==0.7
+tensorflow==2.13.0
+numpy==1.24.3
+streamlit==1.26.0
+opencv-python==4.8.0.74
+Pillow==9.5.0  # Use a compatible version with Streamlit
+matplotlib
+
