@@ -19,7 +19,7 @@ def load_model():
 
 def classify_digit(model, image):
     img = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (28, 28))  # Resize to 28x28 for MNIST
+    img = cv2.resize(img, (28, 28))  
 
     img = 255 - img  # Invert image color
 
@@ -72,7 +72,7 @@ def run_app():
             model = load_model()
             prediction = classify_digit(model, temp_image_path)
             st.subheader('Prediction Results')
-            st.success(f'The digit is: {prediction}')  # No need for np.argmax here
+            st.success(f'The digit is: {prediction}') 
 
 
         os.remove(temp_image_path)

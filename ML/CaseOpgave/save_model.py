@@ -1,6 +1,5 @@
 from MNISTNeuralNetwork import MNISTNeuralNetwork
 
-# Example usage
 data_path = r'C:\Users\Stefan\Desktop\mnistData' 
 network_architecture = [784, 100, 10]
 
@@ -13,7 +12,7 @@ mnist_nn.load_data()
 # Train the network
 mnist_nn.train(epochs=150, mini_batch_size=128, learning_rate=0.1)
 
-# Save the network data and weights
+# Save the network data and weights and biases
 mnist_nn.save_all('mnist_data.h5')
 
 # Print the test accuracy
