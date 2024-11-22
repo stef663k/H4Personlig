@@ -1,0 +1,5 @@
+https://www.baeldung.com/kafka-topics-partitions
+
+Topics is a storage mechanisme of events that is immutable and comes in the same order 
+Partition is used by topic to break up in smaller batches by user
+offset is an unique identifier assigned to each message in a Partition

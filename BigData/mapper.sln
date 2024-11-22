@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapper", "mapper\mapper.csproj", "{B97EE419-3582-4A2C-B62E-2B2CBD83FC55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reducer", "reducer\reducer.csproj", "{8B56C6B5-5B97-49B7-95CD-1ED73C6592B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "Producer\Producer.csproj", "{2BD38792-2448-44A4-B6A9-48C91B82B9AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B97EE419-3582-4A2C-B62E-2B2CBD83FC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97EE419-3582-4A2C-B62E-2B2CBD83FC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97EE419-3582-4A2C-B62E-2B2CBD83FC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97EE419-3582-4A2C-B62E-2B2CBD83FC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B56C6B5-5B97-49B7-95CD-1ED73C6592B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B56C6B5-5B97-49B7-95CD-1ED73C6592B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B56C6B5-5B97-49B7-95CD-1ED73C6592B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B56C6B5-5B97-49B7-95CD-1ED73C6592B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD38792-2448-44A4-B6A9-48C91B82B9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD38792-2448-44A4-B6A9-48C91B82B9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD38792-2448-44A4-B6A9-48C91B82B9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD38792-2448-44A4-B6A9-48C91B82B9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
