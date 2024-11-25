@@ -35,7 +35,7 @@ class Program
 
         for ( int i = 0; i < 100; i++)
         {
-            var value = $"Hello world from Stefan! {i}";
+            var value = $"BB må ikke sove nu {i}";
             var deliveryReport = await producer.ProduceAsync(topic, new Message<Null, string> { Value = value });
             Console.WriteLine($"Delivered '{deliveryReport.Value}' to '{deliveryReport.TopicPartitionOffset}'");
         }

@@ -24,7 +24,7 @@ class Program
             Acks = Acks.All,
             AutoOffsetReset = AutoOffsetReset.Latest,
             EnableAutoCommit = true,
-            GroupId = "Stefan",
+            GroupId = "Stefan-group",
 
         };
 
@@ -34,7 +34,6 @@ class Program
 
         var topic = "BB";
         consumer.Subscribe(topic);
-
         var cancellationToken = new CancellationTokenSource();
 
         while(!cancellationToken.IsCancellationRequested)
