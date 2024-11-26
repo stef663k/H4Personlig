@@ -1,0 +1,6 @@
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.csproj.AssemblyReference.cache
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.AssemblyInfoInputs.cache
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.AssemblyInfo.cs
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.csproj.CoreCompileInputs.cache
+C:\Users\Stefan\Desktop\H4Personlig\BigData\BD1\Consumer\obj\Debug\net5.0\Consumer.sourcelink.json

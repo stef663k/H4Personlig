@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a49dd6cb308f5696f394b67814470d37ccfb68a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a38c4470790f57b40fe0ab1be0be54894b756165")]
 [assembly: System.Reflection.AssemblyProductAttribute("mapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

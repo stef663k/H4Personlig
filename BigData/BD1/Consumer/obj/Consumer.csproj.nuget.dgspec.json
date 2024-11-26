@@ -53,15 +53,19 @@
           "dependencies": {
             "Confluent.Kafka": {
               "target": "Package",
-              "version": "[2.6.1, )"
+              "version": "[1.9.2, )"
             },
-            "Microsoft.Extensions.Hosting": {
+            "Confluent.SchemaRegistry": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[1.9.2, )"
             },
-            "kafka-sharp": {
+            "Confluent.SchemaRegistry.Serdes.Avro": {
               "target": "Package",
-              "version": "[1.4.3, )"
+              "version": "[1.9.2, )"
+            },
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
