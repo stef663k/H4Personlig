@@ -19,7 +19,6 @@ public class AvroClass : ISpecificRecord
 
     public string Field1 { get; set; } = string.Empty;
     public int Field2 { get; set; }
-    public string Name { get; set; } = string.Empty; 
 
     public object Get(int fieldPos)
     {

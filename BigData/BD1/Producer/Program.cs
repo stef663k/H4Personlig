@@ -108,7 +108,7 @@ class Program
         {
             var avroClass = new AvroClass
             {
-                Field1 = "Hello",
+                Field1 = "Hello from big data",
                 Field2 = i,
             };
 
