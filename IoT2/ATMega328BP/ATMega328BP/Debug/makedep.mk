@@ -4,6 +4,8 @@
 
 bitwise_operations.c
 
+ExternalInterrupt.c
+
 main.c
 
 state_machine.c

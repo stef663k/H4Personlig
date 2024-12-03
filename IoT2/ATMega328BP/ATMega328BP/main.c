@@ -4,29 +4,31 @@
 #include "bitwise_operations.h"
 #include "UART.h"
 #include "state_machine.h"
+#include "ExternalInterrupt.h"
 
-// Global variables
+volatile uint16_t interruptCount = 0;
 State currentState = Modtag_Adresse;
 uint8_t address = 0x00;
-
-uint16_t Add8BitNumbers(uint8_t Number1, uint8_t Number2) {
-	return (Number1 + Number2);
-}
-
-void UART_PrintUCSR1A() {
-	uint8_t ucsr1a_value = UCSR1A;
-	UART_PrintString("UCSR1A value: ");
-	UART_PrintHex(ucsr1a_value);
-	UART_PrintString("\n");
-}
 
 int main(void) {
 	RS232Init();
 	Enable_UART_Receive_Interrupt();
-	sei();  // Enable global interrupts
-
+	
+	sei(); // Enable global interrupts
+	AttachAndEnableExternalInterrupt(EXTERNAL_INTERRUPT_0, MyExternalInterruptHandler, FALLING_EDGE_GENERATE_INTERRUPT);
+	
+	// Set D2 (INT0) as input
+	DDRD &= ~(1 << DDD2);
+	
+	// Set D13 as output
+	DDRB |= (1 << DDRB1) | (1 << DDRB2) | (1 << DDRB3);
+	
 	while (1) {
-		// Main loop remains empty as processing is handled in the interrupt
+		char receivedChar = uart_getch(NULL);
+		char receivedByte = UDR1;
+		PORTB ^= (1 << PORTB5);
+		_delay_ms(1000);
+		handle_state_machine(&currentState, receivedByte, &address);
 	}
 
 	return 0;
@@ -42,8 +44,11 @@ ISR(USART1_RX_vect) {
 			UART_PrintString("Data Overrun ");
 		}
 		UART_PrintString("\n");
+		
+		UCSR1A |= (1 << FE1) | (1 << DOR1);
 		} else {
 		char receivedByte = UDR1;
+		
 		handle_state_machine(&currentState, receivedByte, &address);
 	}
 }

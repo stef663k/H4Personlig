@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Stefan\Desktop\H4Personlig\IoT2\1) Timer_Interrupt_ASM\main.asm Tue Oct 29 13:33:18 2024
+AVRASM ver. 2.2.8  C:\Users\Stefan\Desktop\H4Personlig\IoT2\1) Timer_Interrupt_ASM\main.asm Fri Nov 29 12:40:57 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
 C:\Users\Stefan\Desktop\H4Personlig\IoT2\1) Timer_Interrupt_ASM\main.asm(13): Including file 'C:\Users\Stefan\Desktop\H4Personlig\IoT2\1) Timer_Interrupt_ASM\ProjectDefines.inc'

@@ -104,7 +104,7 @@ class Program
 
     private static async Task ProduceMessages(IProducer<Null, AvroClass> producer, string topic)
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 100000; i++)
         {
             var avroClass = new AvroClass
             {

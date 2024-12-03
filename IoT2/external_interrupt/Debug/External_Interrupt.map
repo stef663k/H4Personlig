@@ -731,14 +731,14 @@ END GROUP
  .debug_frame   0x0000013c       0x54 main.o
  .debug_frame   0x00000190      0x138 UART.o
 
-.debug_str      0x00000000     0x8735
+.debug_str      0x00000000     0x8777
  *(.debug_str)
  .debug_str     0x00000000      0x318 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
- .debug_str     0x00000318     0x759a ExternalInterrupt.o
-                               0x765b (size before relaxing)
- .debug_str     0x000078b2      0x9e6 main.o
+ .debug_str     0x00000318     0x75a2 ExternalInterrupt.o
+                               0x7663 (size before relaxing)
+ .debug_str     0x000078ba      0xa20 main.o
                                0x7f0e (size before relaxing)
- .debug_str     0x00008298      0x49d UART.o
+ .debug_str     0x000082da      0x49d UART.o
                                0x7fda (size before relaxing)
 
 .debug_loc      0x00000000      0x5a4

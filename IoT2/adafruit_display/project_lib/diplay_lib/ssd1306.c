@@ -285,15 +285,18 @@ uint8_t SSD1306_ClearScreen (void)
   }
   //  send clear byte to memory lcd
   // -------------------------------------------------------------------------------------
-  for (uint16_t i=0; i<CACHE_SIZE_MEM; i++) {
-    status = TWI_MT_Send_Data (CLEAR_COLOR);                      // send data 0x00
-    if (SSD1306_SUCCESS != status) {                              // check status
-      return status;                                              // error
-    }
-  }
-  // TWI STOP
-  // -------------------------------------------------------------------------------------
-  TWI_Stop ();
+	for (uint16_t i = 0; i < CACHE_SIZE_MEM; i++) {
+		status = TWI_MT_Send_Data(CLEAR_COLOR);  // Send data (0x00)
+		if (SSD1306_SUCCESS != status) {        // Check status
+			printf("Error sending data at index %d, status: %d\n", i, status);
+			return status;                      // Exit on error
+		}
+	}
+	printf("Successfully cleared display memory.\n");
+
+	// TWI STOP
+	TWI_Stop();
+
 
   return SSD1306_SUCCESS;                                         // success
 }
@@ -967,15 +970,14 @@ uint8_t SSD1306_Retry_Send_Command(uint8_t command, uint8_t retries_max) {
 }
 
 uint8_t SSD1306_UpdateScreen(uint8_t I2C_Address) {
-	// Retry parameters
 	const uint8_t MAX_RETRIES = 3;  // Max retries
 	uint8_t retries = 0;
 
-	// Set the column address window to start at 8th column and end at 15th column (example)
+	// Set the column address window to start at 8th column and end at 15th column
 	while (retries < MAX_RETRIES) {
-		if (SSD1306_Send_Command(0x21) != SSD1306_ERROR &&  // Command to set column address
-		SSD1306_Send_Command(0x08) != SSD1306_ERROR &&  // Start column address (column 8)
-		SSD1306_Send_Command(0x0F) != SSD1306_ERROR) { // End column address (column 15)
+		if (SSD1306_Send_Command(0x21) != SSD1306_ERROR &&
+		SSD1306_Send_Command(0x08) != SSD1306_ERROR &&
+		SSD1306_Send_Command(0x0F) != SSD1306_ERROR) {
 			break;  // Success, exit retry loop
 		}
 		retries++;
@@ -984,15 +986,15 @@ uint8_t SSD1306_UpdateScreen(uint8_t I2C_Address) {
 
 	if (retries == MAX_RETRIES) {
 		printf("Failed to set column address after %d retries.\n", MAX_RETRIES);
-		return SSD1306_ERROR;  // Return error if retries exhausted
+		return SSD1306_ERROR;
 	}
 
 	retries = 0;  // Reset retries for page address
-	// Set the page address window to 0 (if using a single page)
+	// Set the page address window to 0 (single page)
 	while (retries < MAX_RETRIES) {
-		if (SSD1306_Send_Command(0x22) != SSD1306_ERROR &&  // Command to set page address
-		SSD1306_Send_Command(0x00) != SSD1306_ERROR &&  // Start page address (page 0)
-		SSD1306_Send_Command(0x00) != SSD1306_ERROR) {  // End page address (page 0, assuming single page)
+		if (SSD1306_Send_Command(0x22) != SSD1306_ERROR &&
+		SSD1306_Send_Command(0x00) != SSD1306_ERROR &&
+		SSD1306_Send_Command(0x00) != SSD1306_ERROR) {
 			break;  // Success, exit retry loop
 		}
 		retries++;
@@ -1001,11 +1003,9 @@ uint8_t SSD1306_UpdateScreen(uint8_t I2C_Address) {
 
 	if (retries == MAX_RETRIES) {
 		printf("Failed to set page address after %d retries.\n", MAX_RETRIES);
-		return SSD1306_ERROR;  // Return error if retries exhausted
+		return SSD1306_ERROR;
 	}
 
-	// Continue sending other commands and updating data here...
-	
-	return SSD1306_SUCCESS;  // Success after all retries
+	return SSD1306_SUCCESS;
 }
 

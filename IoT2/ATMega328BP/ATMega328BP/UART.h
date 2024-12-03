@@ -22,7 +22,7 @@ void UART_PrintChar(char c);
 void UART_PrintString(const char* str);
 void UART_PrintHex(uint8_t value);
 void UART_PrintBinary(uint8_t value);
- 
+void UART_PrintInt(uint8_t value);
 void HandleUARTCommand(char command, uint8_t bitPosition);
 
 #endif /* UART_H_ */

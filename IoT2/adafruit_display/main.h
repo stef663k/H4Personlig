@@ -10,7 +10,7 @@
 
 extern void ConvertReceivedChar(char *ReceivedChar);
 extern void ReceiveNewTimeoutValue(char *ReceivedChar);
-extern void WriteReceivedCharacterFromUARTInDisplay(char ReceivedCharacterFromUART);
+extern void WriteReceivedCharacterFromUARTInDisplay();
 void ProcessRecievedCharacters(void);
 
 #endif /* MAIN_H_ */

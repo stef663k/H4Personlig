@@ -82,3 +82,10 @@ void UART_PrintBinary(uint8_t value) {
 	UART_PrintString("\n");
 }
 
+void UART_PrintInt(uint8_t value) {
+	char buffer[12]; 
+	sprintf(buffer, "%d", value);
+	UART_PrintString(buffer);
+	UART_PrintString("\n");
+}
+
