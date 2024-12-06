@@ -23,13 +23,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000002c8  00000000  00000000  00003464  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00008777  00000000  00000000  0000372c  2**0
+ 10 .debug_str    0000874c  00000000  00000000  0000372c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000005a4  00000000  00000000  0000bea3  2**0
+ 11 .debug_loc    000005a4  00000000  00000000  0000be78  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  0000c447  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  0000c41c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  00002e5a  00000000  00000000  0000c4d7  2**0
+ 13 .debug_macro  00002e60  00000000  00000000  0000c4ac  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -423,6 +423,12 @@ ISR(INT1_vect)
  2de:	18 95       	reti
 
 000002e0 <ExternalInterruptFunction_0>:
+static volatile uint16_t NumberOfExternalInterruptsOnPin0 = 0;
+static volatile uint16_t NumberOfExternalInterruptsOnPin0FromCallback = 0;
+static volatile bool InterruptOnExternalPin0 = false;
+
+void ExternalInterruptFunction_0(uint16_t NumberOfExternalInterruptsOnPin0FromCallbackHere)
+{
  2e0:	cf 93       	push	r28
  2e2:	df 93       	push	r29
  2e4:	00 d0       	rcall	.+0      	; 0x2e6 <ExternalInterruptFunction_0+0x6>
@@ -430,17 +436,21 @@ ISR(INT1_vect)
  2e8:	de b7       	in	r29, 0x3e	; 62
  2ea:	9a 83       	std	Y+2, r25	; 0x02
  2ec:	89 83       	std	Y+1, r24	; 0x01
+	NumberOfExternalInterruptsOnPin0++;
  2ee:	80 91 90 01 	lds	r24, 0x0190	; 0x800190 <__data_end>
  2f2:	90 91 91 01 	lds	r25, 0x0191	; 0x800191 <__data_end+0x1>
  2f6:	01 96       	adiw	r24, 0x01	; 1
  2f8:	90 93 91 01 	sts	0x0191, r25	; 0x800191 <__data_end+0x1>
  2fc:	80 93 90 01 	sts	0x0190, r24	; 0x800190 <__data_end>
+	NumberOfExternalInterruptsOnPin0FromCallback = NumberOfExternalInterruptsOnPin0FromCallbackHere;
  300:	89 81       	ldd	r24, Y+1	; 0x01
  302:	9a 81       	ldd	r25, Y+2	; 0x02
  304:	90 93 93 01 	sts	0x0193, r25	; 0x800193 <NumberOfExternalInterruptsOnPin0FromCallback+0x1>
  308:	80 93 92 01 	sts	0x0192, r24	; 0x800192 <NumberOfExternalInterruptsOnPin0FromCallback>
+	InterruptOnExternalPin0 = true;
  30c:	81 e0       	ldi	r24, 0x01	; 1
  30e:	80 93 94 01 	sts	0x0194, r24	; 0x800194 <InterruptOnExternalPin0>
+}
  312:	00 00       	nop
  314:	0f 90       	pop	r0
  316:	0f 90       	pop	r0
@@ -449,6 +459,9 @@ ISR(INT1_vect)
  31c:	08 95       	ret
 
 0000031e <main>:
+
+int main(void)
+ {
  31e:	cf 93       	push	r28
  320:	df 93       	push	r29
  322:	00 d0       	rcall	.+0      	; 0x324 <main+0x6>
@@ -456,25 +469,45 @@ ISR(INT1_vect)
  326:	00 d0       	rcall	.+0      	; 0x328 <main+0xa>
  328:	cd b7       	in	r28, 0x3d	; 61
  32a:	de b7       	in	r29, 0x3e	; 62
+	char OutputCharArray[6];
+	 
+	AttachAndEnableExternalInterrupt(EXTERNAL_INTERRUPT_0, ExternalInterruptFunction_0, FALLING_EDGE_GENERATE_INTERRUPT);
  32c:	42 e0       	ldi	r20, 0x02	; 2
  32e:	60 e7       	ldi	r22, 0x70	; 112
  330:	71 e0       	ldi	r23, 0x01	; 1
  332:	80 e0       	ldi	r24, 0x00	; 0
  334:	e8 de       	rcall	.-560    	; 0x106 <AttachAndEnableExternalInterrupt>
+		
+	RS232Init();
  336:	3c d0       	rcall	.+120    	; 0x3b0 <RS232Init>
+	Enable_UART_Receive_Interrupt();
  338:	b2 d0       	rcall	.+356    	; 0x49e <Enable_UART_Receive_Interrupt>
  33a:	78 94       	sei
+	
+	sei();
+	
+	printf("\nEmbedded styrer for vildt !!!\n");
  33c:	84 e2       	ldi	r24, 0x24	; 36
  33e:	91 e0       	ldi	r25, 0x01	; 1
  340:	01 d1       	rcall	.+514    	; 0x544 <puts>
  342:	80 91 94 01 	lds	r24, 0x0194	; 0x800194 <InterruptOnExternalPin0>
+    /* Replace with your application code */
+    while (1) 
+    {
+		if (true == InterruptOnExternalPin0)
  346:	88 23       	and	r24, r24
  348:	e1 f3       	breq	.-8      	; 0x342 <main+0x24>
  34a:	10 92 94 01 	sts	0x0194, r1	; 0x800194 <InterruptOnExternalPin0>
+		{
+			InterruptOnExternalPin0 = false;
+			
+			// Output info to UART
+			printf("\nInterrupt on External Pin 0. \n");
  34e:	83 e4       	ldi	r24, 0x43	; 67
  350:	91 e0       	ldi	r25, 0x01	; 1
  352:	f8 d0       	rcall	.+496    	; 0x544 <puts>
  354:	82 e6       	ldi	r24, 0x62	; 98
+			printf("Number of Interrupts on ExternalPin 0 : ");
  356:	91 e0       	ldi	r25, 0x01	; 1
  358:	89 2f       	mov	r24, r25
  35a:	8f 93       	push	r24
@@ -485,6 +518,7 @@ ISR(INT1_vect)
  364:	0f 90       	pop	r0
  366:	0f 90       	pop	r0
  368:	80 91 90 01 	lds	r24, 0x0190	; 0x800190 <__data_end>
+			sprintf(OutputCharArray, "%05d", NumberOfExternalInterruptsOnPin0);
  36c:	90 91 91 01 	lds	r25, 0x0191	; 0x800191 <__data_end+0x1>
  370:	29 2f       	mov	r18, r25
  372:	2f 93       	push	r18
@@ -507,6 +541,7 @@ ISR(INT1_vect)
  394:	0f 90       	pop	r0
  396:	0f 90       	pop	r0
  398:	0f 90       	pop	r0
+			printf(OutputCharArray);
  39a:	ce 01       	movw	r24, r28
  39c:	01 96       	adiw	r24, 0x01	; 1
  39e:	9f 93       	push	r25
@@ -514,13 +549,22 @@ ISR(INT1_vect)
  3a2:	b8 d0       	rcall	.+368    	; 0x514 <printf>
  3a4:	0f 90       	pop	r0
  3a6:	0f 90       	pop	r0
+			printf("\n");
  3a8:	8a e0       	ldi	r24, 0x0A	; 10
  3aa:	90 e0       	ldi	r25, 0x00	; 0
  3ac:	c6 d0       	rcall	.+396    	; 0x53a <putchar>
  3ae:	c9 cf       	rjmp	.-110    	; 0x342 <main+0x24>
 
 000003b0 <RS232Init>:
+		}
+    }
  3b0:	cf 93       	push	r28
+}
+
+void Disable_UART_Receive_Interupt()
+{
+	UCSRB &= ~(1 << RXCIE); // Disable the USART Recieve Complete interrupt (USART_RXC)
+}
  3b2:	df 93       	push	r29
  3b4:	cd b7       	in	r28, 0x3d	; 61
  3b6:	de b7       	in	r29, 0x3e	; 62
@@ -664,6 +708,9 @@ ISR(INT1_vect)
  4be:	08 95       	ret
 
 000004c0 <__vector_28>:
+
+ISR(UART_ISR_VECTOR)
+{
  4c0:	1f 92       	push	r1
  4c2:	0f 92       	push	r0
  4c4:	00 90 5f 00 	lds	r0, 0x005F	; 0x80005f <__TEXT_REGION_LENGTH__+0x7f805f>
@@ -679,17 +726,23 @@ ISR(INT1_vect)
  4da:	1f 92       	push	r1
  4dc:	cd b7       	in	r28, 0x3d	; 61
  4de:	de b7       	in	r29, 0x3e	; 62
+	char ReceivedChar;
+	ReceivedChar = UDR;
  4e0:	8e ec       	ldi	r24, 0xCE	; 206
  4e2:	90 e0       	ldi	r25, 0x00	; 0
  4e4:	fc 01       	movw	r30, r24
  4e6:	80 81       	ld	r24, Z
  4e8:	89 83       	std	Y+1, r24	; 0x01
+	//TreatReceivedCharOnUART(ReceivedChar);
+	UDR = ReceivedChar; // Echo back the received byte converted to the computer
  4ea:	8e ec       	ldi	r24, 0xCE	; 206
  4ec:	90 e0       	ldi	r25, 0x00	; 0
  4ee:	29 81       	ldd	r18, Y+1	; 0x01
  4f0:	fc 01       	movw	r30, r24
  4f2:	20 83       	st	Z, r18
+	sei();
  4f4:	78 94       	sei
+}
  4f6:	00 00       	nop
  4f8:	0f 90       	pop	r0
  4fa:	df 91       	pop	r29

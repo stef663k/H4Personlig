@@ -29,6 +29,9 @@ void ExternalInterruptFunction_0(uint16_t NumberOfExternalInterruptsOnPin0FromCa
 int main(void)
  {
 	char OutputCharArray[6];
+	
+	LED_DDR |= (1 << LED_PIN);
+	LED_PORT &= ~(1 << LED_PIN);
 	 
 	AttachAndEnableExternalInterrupt(EXTERNAL_INTERRUPT_0, ExternalInterruptFunction_0, FALLING_EDGE_GENERATE_INTERRUPT);
 		
@@ -39,6 +42,7 @@ int main(void)
 	
 	printf("\nEmbedded styrer for vildt !!!\n");
     /* Replace with your application code */
+
     while (1) 
     {
 		if (true == InterruptOnExternalPin0)

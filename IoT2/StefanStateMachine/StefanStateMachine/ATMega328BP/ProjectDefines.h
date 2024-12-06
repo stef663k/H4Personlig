@@ -106,10 +106,6 @@ typedef enum
 
 #define NumberBase 10
 #define CharArrayEndCharacter '\0'
-#define LED_PIN PORTB2
-#define LED_PINBUT PORTB5
-#define BUTTON_PIN PORTD2
-#define FIVE_SECOND_THRESHOLD 19531
 
 typedef void (*Function_Pointer_With_No_Parameters)(void);
 typedef void (*Function_Pointer_With_One_Uint16_t_Parameter)(uint16_t);

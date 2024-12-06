@@ -136,7 +136,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x18 UART.o
  .debug_macro   0x00000000       0x6c UART.o
  .debug_macro   0x00000000       0x69 UART.o
- .debug_macro   0x00000000       0x40 UART.o
+ .debug_macro   0x00000000       0x46 UART.o
  .debug_macro   0x00000000       0x58 UART.o
  .debug_macro   0x00000000       0x10 UART.o
  .debug_macro   0x00000000       0x97 UART.o
@@ -731,15 +731,15 @@ END GROUP
  .debug_frame   0x0000013c       0x54 main.o
  .debug_frame   0x00000190      0x138 UART.o
 
-.debug_str      0x00000000     0x8777
+.debug_str      0x00000000     0x874c
  *(.debug_str)
  .debug_str     0x00000000      0x318 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
  .debug_str     0x00000318     0x75a2 ExternalInterrupt.o
                                0x7663 (size before relaxing)
- .debug_str     0x000078ba      0xa20 main.o
-                               0x7f0e (size before relaxing)
- .debug_str     0x000082da      0x49d UART.o
-                               0x7fda (size before relaxing)
+ .debug_str     0x000078ba      0x9f5 main.o
+                               0x7f25 (size before relaxing)
+ .debug_str     0x000082af      0x49d UART.o
+                               0x7ff1 (size before relaxing)
 
 .debug_loc      0x00000000      0x5a4
  *(.debug_loc)
@@ -771,7 +771,7 @@ END GROUP
  .debug_ranges  0x00000030       0x18 main.o
  .debug_ranges  0x00000048       0x48 UART.o
 
-.debug_macro    0x00000000     0x2e5a
+.debug_macro    0x00000000     0x2e60
  *(.debug_macro)
  .debug_macro   0x00000000       0xa8 ExternalInterrupt.o
  .debug_macro   0x000000a8      0xa4e ExternalInterrupt.o
@@ -792,12 +792,12 @@ END GROUP
  .debug_macro   0x00002a6c       0x16 main.o
  .debug_macro   0x00002a82       0x97 main.o
  .debug_macro   0x00002b19       0x16 main.o
- .debug_macro   0x00002b2f       0x40 main.o
- .debug_macro   0x00002b6f       0x58 main.o
- .debug_macro   0x00002bc7       0x10 main.o
- .debug_macro   0x00002bd7       0x20 main.o
- .debug_macro   0x00002bf7       0xf2 main.o
- .debug_macro   0x00002ce9       0x22 main.o
- .debug_macro   0x00002d0b      0x14f UART.o
+ .debug_macro   0x00002b2f       0x46 main.o
+ .debug_macro   0x00002b75       0x58 main.o
+ .debug_macro   0x00002bcd       0x10 main.o
+ .debug_macro   0x00002bdd       0x20 main.o
+ .debug_macro   0x00002bfd       0xf2 main.o
+ .debug_macro   0x00002cef       0x22 main.o
+ .debug_macro   0x00002d11      0x14f UART.o
 OUTPUT(External_Interrupt.elf elf32-avr)
 LOAD linker stubs

@@ -27,4 +27,8 @@ typedef enum
 #define ExternalInt2LedBitPosition	7
 #define ExternalInt7LedBitPosition	7
 
+#define LED_PIN PORTB2
+#define LED_DDR DDRB
+#define LED_PORT PORTB
+
 #endif /* PROJECTDEFINES_H_ */

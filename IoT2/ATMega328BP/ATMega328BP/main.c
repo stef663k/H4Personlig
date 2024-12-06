@@ -1,54 +1,30 @@
-#include <util/delay.h>
-#include <avr/interrupt.h>
 #include <avr/io.h>
-#include "bitwise_operations.h"
-#include "UART.h"
-#include "state_machine.h"
+#include <avr/interrupt.h>
+#include <util/delay.h>
 #include "ExternalInterrupt.h"
+#include "ProjectDefines.h"
+#include "UART.h"
 
-volatile uint16_t interruptCount = 0;
-State currentState = Modtag_Adresse;
-uint8_t address = 0x00;
 
 int main(void) {
 	RS232Init();
-	Enable_UART_Receive_Interrupt();
+	Timer1_Init();
 	
-	sei(); // Enable global interrupts
-	AttachAndEnableExternalInterrupt(EXTERNAL_INTERRUPT_0, MyExternalInterruptHandler, FALLING_EDGE_GENERATE_INTERRUPT);
+	DDRB |= (1 << LED_PINBUT);
+	PORTB |= (1 << LED_PINBUT);
 	
-	// Set D2 (INT0) as input
-	DDRD &= ~(1 << DDD2);
+	DDRD &= ~(1 << BUTTON_PIN);
+	PORTD |= (1 << BUTTON_PIN);
+
+	EICRA = (1 << ISC01) | (1 << ISC00);  
+	EIMSK = (1 << INT0);
 	
-	// Set D13 as output
-	DDRB |= (1 << DDRB1) | (1 << DDRB2) | (1 << DDRB3);
-	
+
+	sei();  
+
 	while (1) {
-		char receivedChar = uart_getch(NULL);
-		char receivedByte = UDR1;
-		PORTB ^= (1 << PORTB5);
-		_delay_ms(1000);
-		handle_state_machine(&currentState, receivedByte, &address);
+		processInterrupts();
 	}
 
 	return 0;
-}
-
-ISR(USART1_RX_vect) {
-	if (UCSR1A & ((1 << FE1) | (1 << DOR1))) {
-		UART_PrintString("UART Error: ");
-		if (UCSR1A & (1 << FE1)) {
-			UART_PrintString("Framing Error ");
-		}
-		if (UCSR1A & (1 << DOR1)) {
-			UART_PrintString("Data Overrun ");
-		}
-		UART_PrintString("\n");
-		
-		UCSR1A |= (1 << FE1) | (1 << DOR1);
-		} else {
-		char receivedByte = UDR1;
-		
-		handle_state_machine(&currentState, receivedByte, &address);
-	}
 }
