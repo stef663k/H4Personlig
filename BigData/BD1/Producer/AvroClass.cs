@@ -1,32 +1,33 @@
 using Avro;
 using Avro.Specific;
-using Avro.IO;
-using System.IO;
+
 namespace Producer;
+
 public class AvroClass : ISpecificRecord
 {
-    public static Schema _SCHEMA = Schema.Parse(@"{
-        ""type"": ""record"",
-        ""name"": ""AvroClass"",
-        ""namespace"": ""Producer"",
-        ""fields"": [
-            { ""name"": ""Field1"", ""type"": ""string"" },
-            { ""name"": ""Field2"", ""type"": ""int"" },
-        ]
-    }");
+    public static readonly Schema _SCHEMA =
+    Schema.Parse("{\"type\": \"record\", \"name\": \"HusstandeRec\", \"namespace\": \"HustandeGruppeEt\", \"fields\": ["
+                + "{\"name\": \"Elmaaler_ID\", \"type\": \"string\"}, "
+                + "{\"name\": \"Elforbrug\", \"type\": \"double\"}, "
+                + "{\"name\": \"Varmemaaler_ID\", \"type\": \"string\"}, "
+                + "{\"name\": \"Varmeforbrug\", \"type\": \"double\"}]}");
 
     public virtual Schema Schema => _SCHEMA;
 
-    public string Field1 { get; set; } = string.Empty;
-    public int Field2 { get; set; }
+    public string? Elmaaler_ID { get; set; }
+    public double Elforbrug { get; set; }
+    public string? Varmemaaler_ID { get; set; }
+    public double Varmeforbrug { get; set; }
 
     public object Get(int fieldPos)
     {
         return fieldPos switch
         {
-            0 => Field1,
-            1 => Field2,
-            _ => throw new AvroRuntimeException($"Bad index {fieldPos}")
+            0 => Elmaaler_ID ?? string.Empty,
+            1 => Elforbrug,
+            2 => Varmemaaler_ID ?? string.Empty,
+            3 => Varmeforbrug,
+            _ => throw new AvroRuntimeException("Bad index " + fieldPos)
         };
     }
 
@@ -34,29 +35,11 @@ public class AvroClass : ISpecificRecord
     {
         switch (fieldPos)
         {
-            case 0: Field1 = (string)fieldValue; break;
-            case 1: Field2 = (int)fieldValue; break;
-            default: throw new AvroRuntimeException($"Bad index {fieldPos}");
-        }
-    }
-
-    public override string ToString()
-    {
-        return $"Field1 = {Field1}, Field2 = {Field2}";
-    }
-    public static byte[] SerializeAvroClass(AvroClass avroClass)
-    {
-        var schema = AvroClass._SCHEMA;
-        var serializer = new SpecificDatumWriter<AvroClass>(schema);
-        
-        using (var stream = new MemoryStream())
-        {
-            var encoder = new BinaryEncoder(stream);
-            serializer.Write(avroClass, encoder);
-            return stream.ToArray(); 
+            case 0: Elmaaler_ID = (string)fieldValue; break;
+            case 1: Elforbrug = (double)fieldValue; break;
+            case 2: Varmemaaler_ID = (string)fieldValue; break;
+            case 3: Varmeforbrug = (double)fieldValue; break;
+            default: throw new AvroRuntimeException("Bad index " + fieldPos);
         }
     }
 }
-
-
-

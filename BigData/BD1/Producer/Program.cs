@@ -6,6 +6,7 @@ using Confluent.SchemaRegistry.Serdes;
 using Avro;
 using Avro.Specific;
 using System.Runtime.Serialization;
+using Producer;
 
 namespace Producer;
 
@@ -16,7 +17,7 @@ class Program
         var schemaRegistry = InitializeSchemaRegistry();
         var producer = InitializeProducer(schemaRegistry);
 
-        var topic = "BB";
+        var topic = "Gruppe1_Husstande";
 
         try
         {
@@ -75,23 +76,42 @@ class Program
 
     private static async Task RegisterSchema(CachedSchemaRegistryClient schemaRegistry)
     {
-        var schemaString = @"{
-            ""fields"": [
-                { ""name"": ""Field1"", ""type"": ""string"" },
-                { ""name"": ""Field2"", ""type"": ""int"" },
-            ],
-            ""name"": ""AvroClass"",
-            ""namespace"": ""Producer"",
-            ""type"": ""record""
-        }";
+        var schemaString = @"
+                {
+                    ""doc"": ""El og Varme data per time."",
+                    ""fields"": [
+                        {
+                            ""doc"": ""Elmaaler ID som en String."",
+                            ""name"": ""Elmaaler_ID"",
+                            ""type"": ""string""
+                        },
+                        {
+                            ""doc"": ""Elforbrug som en Double"",
+                            ""name"": ""Elforbrug"",
+                            ""type"": ""double""
+                        },
+                        {
+                            ""doc"": ""Varmemaaler ID som en string."",
+                            ""name"": ""Varmemaaler_ID"",
+                            ""type"": ""string""
+                        },
+                        {
+                            ""doc"": ""Varmeforbrug som en Double"",
+                            ""name"": ""Varmeforbrug"",
+                            ""type"": ""double""
+                        }
+                    ],
+                    ""name"": ""HusstandeRec"",
+                    ""namespace"": ""HustandeGruppeEt"",
+                    ""type"": ""record""
+                }";
+        Avro.Schema schema = Avro.Schema.Parse(schemaString);
 
-        var schema = Avro.Schema.Parse(schemaString);
-
-        var subject = "BB-value";
+        var subject = "Husstande-value";
         try
         {
             var confluentSchema = new Confluent.SchemaRegistry.Schema(schema.ToString(), Confluent.SchemaRegistry.SchemaType.Avro);
-            var schemaId = await schemaRegistry.RegisterSchemaAsync(subject, confluentSchema);   
+            var schemaId = await schemaRegistry.RegisterSchemaAsync(subject, confluentSchema);
             Console.WriteLine($"Schema registered with ID: {schemaId}");
             Console.WriteLine($"Registered schema: {schema}");
 
@@ -104,32 +124,43 @@ class Program
 
     private static async Task ProduceMessages(IProducer<Null, AvroClass> producer, string topic)
     {
-        for (int i = 0; i < 100000; i++)
+        var random = new Random();
+
+        for (int i = 0; i < 100; i++)
         {
             var avroClass = new AvroClass
             {
-                Field1 = "Hello from big data",
-                Field2 = i,
+                Elmaaler_ID = random.Next(10000, 99999).ToString(),
+                Elforbrug = random.NextDouble() * 100, 
+                Varmemaaler_ID = random.Next(10000, 99999).ToString(),
+                Varmeforbrug = random.NextDouble() * 50 
             };
 
-
-            Console.WriteLine($"Message content: {avroClass}");
+            Console.WriteLine($"Message content: Elmaaler_ID={avroClass.Elmaaler_ID}, Elforbrug={avroClass.Elforbrug:F2}, " +
+                            $"Varmemaaler_ID={avroClass.Varmemaaler_ID}, Varmeforbrug={avroClass.Varmeforbrug:F2}");
 
             try
             {
-                var deliveryResult = await producer.ProduceAsync(topic, new Message<Null, AvroClass> { Value = avroClass });
-                Console.WriteLine($"Message produced: {deliveryResult.Value}");
+                var deliveryResult = await producer.ProduceAsync(
+                    topic,
+                    new Message<Null, AvroClass> { Value = avroClass });
+
+                Console.WriteLine($"Message produced: Elmaaler_ID={deliveryResult.Value.Elmaaler_ID}, " +
+                                $"Elforbrug={deliveryResult.Value.Elforbrug:F2}, " +
+                                $"Varmemaaler_ID={deliveryResult.Value.Varmemaaler_ID}, " +
+                                $"Varmeforbrug={deliveryResult.Value.Varmeforbrug:F2}");
             }
             catch (ProduceException<Null, AvroClass> e)
             {
                 Console.WriteLine($"Error producing message: {e.Error.Reason}");
-                Console.WriteLine($"Details: {e.ToString()}");
+                Console.WriteLine($"Details: {e}");
             }
         }
     }
 
 
-    private static void Cleanup(IProducer<Null, AvroClass> producer)
+
+    static void Cleanup(IProducer<Null, AvroClass> producer)
     {
         try
         {

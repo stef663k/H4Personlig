@@ -1,0 +1,2 @@
+prometheus_client==0.15.0
+elasticsearch==8.10.0

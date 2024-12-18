@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ls3bPQ+MhxM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Stefan\\Desktop\\H4Personlig\\BigData\\BD1\\WebScraper\\WebScaper\\WebScaper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Stefan\\.nuget\\packages\\htmlagilitypack\\1.11.71\\htmlagilitypack.1.11.71.nupkg.sha512"
+  ],
+  "logs": []
+}
